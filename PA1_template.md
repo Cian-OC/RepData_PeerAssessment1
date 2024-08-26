@@ -31,30 +31,7 @@ data <- read.csv("activity.csv")
 ``` r
 library(ggplot2)
 library(dplyr)
-```
 
-```
-## Warning: package 'dplyr' was built under R version 4.4.1
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-``` r
 total_steps <- data %>%
   group_by(date) %>%
   summarise(daily_steps = sum(steps, na.rm = TRUE))
@@ -64,7 +41,7 @@ ggplot(total_steps, aes(daily_steps)) + geom_histogram(binwidth = 2000) +
   ylab("Frequency")
 ```
 
-![](figs/fig-unnamed-chunk-2-1.png)<!-- -->
+![plot of chunk unnamed-chunk-2](figs/fig-unnamed-chunk-2-1.png)
 
 ``` r
 meanStepsPerDay <- mean(total_steps$daily_steps, na.rm=TRUE)
@@ -88,7 +65,7 @@ ggplot(data=interval_steps, aes(x=interval, y=steps)) +
   ylab("Average number of steps taken")
 ```
 
-![](figs/fig-unnamed-chunk-4-1.png)<!-- -->
+![plot of chunk unnamed-chunk-4](figs/fig-unnamed-chunk-4-1.png)
 
 ## Imputing missing values
 
@@ -113,7 +90,7 @@ ggplot(imputed_total_steps, aes(daily_steps)) +
   ylab("Frequency")
 ```
 
-![](figs/fig-unnamed-chunk-5-1.png)<!-- -->
+![plot of chunk unnamed-chunk-5](figs/fig-unnamed-chunk-5-1.png)
 
 ``` r
 imputed_mean = mean(imputed_total_steps$daily_steps, na.rm=TRUE)
@@ -128,24 +105,7 @@ median_diff <- imputed_median - medianStepsPerDay
 
 ``` r
 library(lubridate)
-```
 
-```
-## Warning: package 'lubridate' was built under R version 4.4.1
-```
-
-```
-## 
-## Attaching package: 'lubridate'
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     date, intersect, setdiff, union
-```
-
-``` r
 day_of_week <- imputed_data %>%
   mutate(
     date = ymd(date),
@@ -159,8 +119,8 @@ day_of_week <- imputed_data %>%
 ```
 
 ```
-## `summarise()` has grouped output by 'interval'. You can override using the
-## `.groups` argument.
+## `summarise()` has grouped output by 'interval'. You can override using the `.groups`
+## argument.
 ```
 
 ``` r
@@ -173,14 +133,6 @@ ggplot(day_of_week, aes(interval, steps)) +
   ylab("Average number of steps")
 ```
 
-```
-## Warning: The `<scale>` argument of `guides()` cannot be `FALSE`. Use "none" instead as
-## of ggplot2 3.3.4.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.
-```
-
-![](figs/fig-unnamed-chunk-6-1.png)<!-- -->
+![plot of chunk unnamed-chunk-6](figs/fig-unnamed-chunk-6-1.png)
 
 
