@@ -1,6 +1,6 @@
 ---
 output: 
-  html_document: 
+  md_document: 
     keep_md: true
 ---
 
@@ -41,7 +41,7 @@ ggplot(total_steps, aes(daily_steps)) + geom_histogram(binwidth = 2000) +
   ylab("Frequency")
 ```
 
-![plot of chunk unnamed-chunk-2](figs/fig-unnamed-chunk-2-1.png)
+![plot of chunk unnamed-chunk-2](./figure/unnamed-chunk-2-1.png)
 
 ``` r
 meanStepsPerDay <- mean(total_steps$daily_steps, na.rm=TRUE)
@@ -65,7 +65,7 @@ ggplot(data=interval_steps, aes(x=interval, y=steps)) +
   ylab("Average number of steps taken")
 ```
 
-![plot of chunk unnamed-chunk-4](figs/fig-unnamed-chunk-4-1.png)
+![plot of chunk unnamed-chunk-4](./figure/unnamed-chunk-4-1.png)
 
 ## Imputing missing values
 
@@ -90,7 +90,7 @@ ggplot(imputed_total_steps, aes(daily_steps)) +
   ylab("Frequency")
 ```
 
-![plot of chunk unnamed-chunk-5](figs/fig-unnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-5](./figure/unnamed-chunk-5-1.png)
 
 ``` r
 imputed_mean = mean(imputed_total_steps$daily_steps, na.rm=TRUE)
@@ -133,6 +133,6 @@ ggplot(day_of_week, aes(interval, steps)) +
   ylab("Average number of steps")
 ```
 
-![plot of chunk unnamed-chunk-6](figs/fig-unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-6](./figure/unnamed-chunk-6-1.png)
 
 
